@@ -13,7 +13,7 @@ dbConnection();
 const app = express();
 
 // Middleware
-app.use(express.json()); // Parse JSON bodies
+app.use(express.json()); // Parse JSON
 
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev')); // Logging middleware for development
