@@ -1,12 +1,32 @@
 const express = require('express');
+const { param } = require('express-validator');
 
-const { getCategories, getCategory, createCategory, updateCategory,
+// Importing necessary modules and validators
+const {
+    getCategoryValidator,
+    createCategoryValidator,
+    updateCategoryValidator,
+    deleteCategoryValidator,
+} = require('../utils/validators/categoryValidator');
+
+const {
+    getCategories,
+    getCategory,
+    createCategory,
+    updateCategory,
     deleteCategory
 } = require('../services/categoryServices');
 
 const router = express.Router();
 
-router.route('/').get(getCategories).post(createCategory);
-router.route('/:id').get(getCategory).put(updateCategory).delete(deleteCategory);
+router
+    .route('/')
+    .get(getCategories)
+    .post(createCategoryValidator, createCategory);
+router
+    .route('/:id')
+    .get(getCategoryValidator, getCategory)
+    .put(updateCategoryValidator, updateCategory)
+    .delete(deleteCategoryValidator, deleteCategory);
 
 module.exports = router;
