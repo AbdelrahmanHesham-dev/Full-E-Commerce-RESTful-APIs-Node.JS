@@ -1,5 +1,4 @@
 const express = require('express');
-const { param } = require('express-validator');
 
 // Importing necessary modules and validators
 const {
@@ -17,7 +16,12 @@ const {
     deleteCategory
 } = require('../services/categoryServices');
 
+const subcategoriesRoute = require('./subCategoryRoute');
+
+
 const router = express.Router();
+
+router.use('/:categoryId/subcategories', subcategoriesRoute);
 
 router
     .route('/')

@@ -1,4 +1,4 @@
-const Category = require('../models/CategoryModel');
+const Category = require('../models/categoryModel');
 const slugify = require('slugify');
 const asyncHandler = require('express-async-handler');
 
